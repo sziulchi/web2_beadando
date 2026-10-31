@@ -1,43 +1,39 @@
-{{--
-  @if (Auth::check())
+<header id="header">
+	<h1><a href="/">F1</a></h1>
+	<nav id="nav">
+		<ul>
+@if (Auth::check())
 
-  @endif
+			<li><a href="/">Főoldal</a></li>
+			<li><a href="/data">Adatbázis</a></li>
+			<li><a href="/contact">Kapcsolat</a></li>
+			<li><a href="/msg">Üzenetek</a></li>
+			<li><a href="/diagram">Diagram</a></li>
+	
 
-  @if (Auth::check())
+	@if (Auth::User()->role==1)
 
-    @if (Auth::User()->role==1)
+			<li><a href="/crud">CRUD</a></li>
 
     @endif
 
-      @csrf                
+			<li>
+				<form method="post" action="/logout">
+					@csrf
+					<input type="submit" value="Kijelentkezés">
+				</form>
+			</li>
+@else
 
-  @endif
---}}
+			<li><a href="/">Főoldal</a></li>
+			<li><a href="/data">Adatbázis</a></li>
+			<li><a href="/contact">Kapcsolat</a></li>
+			<li><a href="/diagram">Diagram</a></li>
+			<li><a href="/login">Bejelentkezés</a></li>
+			<li><a href="/register">Regisztráció</a></li>
 
+@endif
 
-					<header id="header">
-					<h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#" class="icon solid fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#" class="button">Sign Up</a></li>
-						</ul>
-					</nav>
-				</header>
+		</ul>
+	</nav>
+</header>
