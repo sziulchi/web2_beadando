@@ -1,11 +1,11 @@
-<x-mainpage>
+<x-mainpage :landing="true">
 <!-- Banner -->
 				<section id="banner">
 					<h2>Alpha</h2>
 					<p>Another fine responsive site template freebie by HTML5 UP.</p>
 					<ul class="actions special">
-						<li><a href="#" class="button primary">Sign Up</a></li>
-						<li><a href="#" class="button">Learn More</a></li>
+						<li><a href="/register" class="button primary">Regisztráció</a></li>
+						<li><a href="/login" class="button">Bejelentkezés</a></li>
 					</ul>
 				</section>
 
@@ -79,21 +79,5 @@
 
 				</section>
 
-			<!-- CTA -->
-				<section id="cta">
-					<h2>Sign up for beta access</h2>
-					<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
-
-					<form>
-						<div class="row gtr-50 gtr-uniform">
-							<div class="col-8 col-12-mobilep">
-								<input type="email" name="email" id="email" placeholder="Email Address" />
-							</div>
-							<div class="col-4 col-12-mobilep">
-								<input type="submit" value="Sign Up" class="fit" />
-							</div>
-						</div>
-					</form>
-
-				</section>
+			
 </x-mainpage>
