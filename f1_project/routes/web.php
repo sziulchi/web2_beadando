@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DriverController;
 use App\Http\Middleware\AdminOnly;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DataController;
 
 Route::redirect('dashboard', '/')->name('dashboard');
 Route::get('/', function () { return view('home'); }) ->name('home');
+Route::get('data', [DataController::class, 'index'])->name('data');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user', function () { return view('user'); })->name('user');
