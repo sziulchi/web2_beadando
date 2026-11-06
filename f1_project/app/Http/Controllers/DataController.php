@@ -8,10 +8,6 @@ use App\Models\Result;
 
 class DataController extends Controller
 {
-    /**
-     * Adatbázis menü: a gps, drivers és results tábla adatai (Eloquent ORM).
-     * Minden tábla külön lapozóval (gps_page, drivers_page, results_page).
-     */
     public function index()
     {
         $gps = Gp::orderByDesc('date')
@@ -24,7 +20,6 @@ class DataController extends Controller
             ->withQueryString()
             ->fragment('drivers');
 
-        // with(): eager loading, hogy ne minden sorhoz külön lekérdezés fusson
         $results = Result::with(['driver', 'gp'])
             ->orderByDesc('date')
             ->orderBy('pos')

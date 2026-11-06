@@ -7,12 +7,14 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\DiagramController;
 
 Route::redirect('dashboard', '/')->name('dashboard');
 Route::get('/', function () { return view('home'); }) ->name('home');
 Route::get('data', [DataController::class, 'index'])->name('data');
 Route::get('contact', [ContactController::class, 'show'])->name('contact');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('diagram', [DiagramController::class, 'index'])->name('diagram');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user', function () { return view('user'); })->name('user');
