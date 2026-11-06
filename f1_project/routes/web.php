@@ -6,6 +6,7 @@ use App\Http\Middleware\AdminOnly;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessageController;
 
 Route::redirect('dashboard', '/')->name('dashboard');
 Route::get('/', function () { return view('home'); }) ->name('home');
@@ -15,6 +16,7 @@ Route::post('contact', [ContactController::class, 'store'])->name('contact.store
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user', function () { return view('user'); })->name('user');
+    Route::get('msg', [MessageController::class, 'index'])->name('msg');
 
         Route::middleware(AdminOnly::class)->group(function () {
             Route::get('admin', 'App\Http\Controllers\AdminController@adminPage');
