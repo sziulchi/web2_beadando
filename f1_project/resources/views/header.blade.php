@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" @class(['alt' => $landing])>
 	<h1><a href="/">F1</a></h1>
 	<nav id="nav">
 		<ul>

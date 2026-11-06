@@ -1,18 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Middleware\Auth2;
+use App\Http\Controllers\DriverController;
+use App\Http\Middleware\AdminOnly;
+use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {return Inertia::render('welcome');})->name('home');
+Route::redirect('dashboard', '/')->name('dashboard');
+Route::get('/', function () { return view('home'); }) ->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('user', function () { return view('user'); })->name("user");
-    Route::get('admin', 'App\Http\Controllers\AdminController@adminPage');
+    Route::get('user', function () { return view('user'); })->name('user');
+
+        Route::middleware(AdminOnly::class)->group(function () {
+            Route::get('admin', 'App\Http\Controllers\AdminController@adminPage');
+            Route::resource('crud', DriverController::class)->parameters(['crud' => 'driver'])->except('show');
+    });
+    
 });
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
-Route::get('/', function () { return view('home'); }) ->name('home');
 
