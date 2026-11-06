@@ -5,10 +5,13 @@ use App\Http\Controllers\DriverController;
 use App\Http\Middleware\AdminOnly;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\ContactController;
 
 Route::redirect('dashboard', '/')->name('dashboard');
 Route::get('/', function () { return view('home'); }) ->name('home');
 Route::get('data', [DataController::class, 'index'])->name('data');
+Route::get('contact', [ContactController::class, 'show'])->name('contact');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user', function () { return view('user'); })->name('user');
