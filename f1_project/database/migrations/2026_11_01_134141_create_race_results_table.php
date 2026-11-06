@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('engine');
 
-            $table->foreign('did')->references('id')->on('Drivers')->cascadeOnDelete();
+            $table->foreign('did')->references('id')->on('drivers')->cascadeOnDelete();
             $table->foreign('date')->references('date')->on('gps')->cascadeOnDelete();
 
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('race_results');
+        Schema::dropIfExists('results');
     }
 };
